@@ -191,7 +191,26 @@ fr-enum-types.c: typedefs.h fr-enum-types.h
 file_roller_LDADD =							\
 		    $(top_builddir)/copy-n-paste/libeggsmclient.la	\
 		    $(FR_LIBS)						\
-		    $(DBUS_LIBS)
+
+file_roller_LDADD =					\
+	$(top_builddir)/copy-n-paste/libeggsmclient.la	\
+	$(FR_LIBS)					\
+	$(DBUS_LIBS)
+
+if ENABLE_MAGIC
+file_roller_LDADD += $(MAGIC_LIBS)
+endif
+
+file_roller_server_SOURCES =		\
+	$(COMMON_SOURCES)		\
+	server.c
+	
+file_roller_server_LDADD =		\
+	$(file_roller_LDADD)
+
+test_server_SOURCES = test-server.c
+test_server_FLAGS = $(FR_CFLAGS)
+test_server_LDADD = $(FR_LIBS)
 
 EXTRA_DIST = fr-marshal.list
 
