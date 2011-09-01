@@ -146,6 +146,8 @@ file_roller_SOURCES = 			\
 	open-file.h			\
 	preferences.c			\
 	preferences.h			\
+	rar-utils.c			\
+	rar-utils.h			\
 	typedefs.h			\
 	ui.h				\
 	$(MKDTEMP_FILES)		\
