@@ -14,10 +14,10 @@ Group:		Applications/Archiving
 Source0:	%{name}-%{version}.tar.gz
 Packager:       Paolo Bacchilega <paolo.bacch@tin.it>
 BuildRoot:	%{_builddir}/%{name}-%{version}-root
-Requires:       glib2 >= 2.25.5
-Requires:       gtk2 >= 2.21.4
-BuildRequires:	glib2-devel >= 2.25.5
-BuildRequires:	gtk2-devel >= 2.21.4
+Requires:       glib2 >= 2.16.0
+Requires:       gtk2 >= 2.19.7
+BuildRequires:	glib2-devel >= 2.16.0
+BuildRequires:	gtk2-devel >= 2.19.7
 
 Docdir:         %{prefix}/share/doc
 

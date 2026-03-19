@@ -895,6 +895,12 @@ NAUTILUS_CFLAGS
 NAUTILUS_LIBS
 MKDTEMP_MISSING_TRUE
 MKDTEMP_MISSING_FALSE
+DBUS_CFLAGS
+DBUS_LIBS
+MAGIC_CFLAGS
+MAGIC_LIBS
+ENABLE_MAGIC_TRUE
+ENABLE_MAGIC_FALSE
 GETTEXT_PACKAGE
 USE_NLS
 MSGFMT
@@ -945,7 +951,8 @@ ENABLE_SK_FALSE
 DISTCHECK_CONFIGURE_FLAGS
 HAVE_GNOME_DOC_UTILS_TRUE
 HAVE_GNOME_DOC_UTILS_FALSE
-DISABLE_DEPRECATED
+ENABLE_DEPRECATIONS_TRUE
+ENABLE_DEPRECATIONS_FALSE
 GCONFTOOL
 GCONF_SCHEMA_CONFIG_SOURCE
 GCONF_SCHEMA_FILE_DIR
@@ -976,7 +983,9 @@ PKG_CONFIG_LIBDIR
 GTK_CFLAGS
 GTK_LIBS
 FR_CFLAGS
-FR_LIBS'
+FR_LIBS
+DBUS_CFLAGS
+DBUS_LIBS'
 
 
 # Initialize some variables set by options.
@@ -1567,6 +1576,7 @@ Optional Features:
   --disable-nautilus-actions 
                           don't build the nautilus context menu actions
   --disable-packagekit    build without PackageKit support
+  --enable-magic          use libmagic to detect file type
   --disable-scrollkeeper  do not make updates to the scrollkeeper database
   --enable-deprecations   warn about deprecated usages
   --disable-schemas-install 
@@ -1612,6 +1622,8 @@ Some influential environment variables:
   GTK_LIBS    linker flags for GTK, overriding pkg-config
   FR_CFLAGS   C compiler flags for FR, overriding pkg-config
   FR_LIBS     linker flags for FR, overriding pkg-config
+  DBUS_CFLAGS C compiler flags for DBUS, overriding pkg-config
+  DBUS_LIBS   linker flags for DBUS, overriding pkg-config
 
 Use these variables to override the choices made by `configure' or to help
 it to find libraries and programs with nonstandard names/locations.
@@ -19976,8 +19988,9 @@ fi
 
 
 
-GLIB_REQUIRED=2.25.5
-GIO_REQUIRED=2.25.5
+GLIB_REQUIRED=2.16.0
+GIO_REQUIRED=2.16.0
+GTK_REQUIRED=2.19.7
 GCONF_REQUIRED=2.6.0
 NAUTILUS_REQUIRED=2.22.2
 
@@ -20648,10 +20661,166 @@ fi
 
 if test "x$enable_packagekit" != "xno"; then
 	
+pkg_failed=no
+{ echo "$as_me:$LINENO: checking for DBUS" >&5
+echo $ECHO_N "checking for DBUS... $ECHO_C" >&6; }
+
+if test -n "$DBUS_CFLAGS"; then
+    pkg_cv_DBUS_CFLAGS="$DBUS_CFLAGS"
+ elif test -n "$PKG_CONFIG"; then
+    if test -n "$PKG_CONFIG" && \
+    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"dbus-glib-1\"") >&5
+  ($PKG_CONFIG --exists --print-errors "dbus-glib-1") 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; then
+  pkg_cv_DBUS_CFLAGS=`$PKG_CONFIG --cflags "dbus-glib-1" 2>/dev/null`
+else
+  pkg_failed=yes
+fi
+ else
+    pkg_failed=untried
+fi
+if test -n "$DBUS_LIBS"; then
+    pkg_cv_DBUS_LIBS="$DBUS_LIBS"
+ elif test -n "$PKG_CONFIG"; then
+    if test -n "$PKG_CONFIG" && \
+    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"dbus-glib-1\"") >&5
+  ($PKG_CONFIG --exists --print-errors "dbus-glib-1") 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; then
+  pkg_cv_DBUS_LIBS=`$PKG_CONFIG --libs "dbus-glib-1" 2>/dev/null`
+else
+  pkg_failed=yes
+fi
+ else
+    pkg_failed=untried
+fi
+
+
+
+if test $pkg_failed = yes; then
+   	{ echo "$as_me:$LINENO: result: no" >&5
+echo "${ECHO_T}no" >&6; }
+        
+if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
+        _pkg_short_errors_supported=yes
+else
+        _pkg_short_errors_supported=no
+fi
+        if test $_pkg_short_errors_supported = yes; then
+	        DBUS_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors "dbus-glib-1" 2>&1`
+        else 
+	        DBUS_PKG_ERRORS=`$PKG_CONFIG --print-errors "dbus-glib-1" 2>&1`
+        fi
+	# Put the nasty error message in config.log where it belongs
+	echo "$DBUS_PKG_ERRORS" >&5
+
+	has_dbug_glib=no
+elif test $pkg_failed = untried; then
+     	{ echo "$as_me:$LINENO: result: no" >&5
+echo "${ECHO_T}no" >&6; }
+	has_dbug_glib=no
+else
+	DBUS_CFLAGS=$pkg_cv_DBUS_CFLAGS
+	DBUS_LIBS=$pkg_cv_DBUS_LIBS
+        { echo "$as_me:$LINENO: result: yes" >&5
+echo "${ECHO_T}yes" >&6; }
+	has_dbus_glib=yes
+fi
+	if test "x$has_dbus_glib" = "xyes"; then
+		
 cat >>confdefs.h <<\_ACEOF
 @%:@define ENABLE_PACKAGEKIT 1
 _ACEOF
 
+        else
+		enable_packagekit=no
+        fi
+fi
+
+
+
+
+# Check whether --enable-magic was given.
+if test "${enable_magic+set}" = set; then
+  enableval=$enable_magic; 
+else
+  enable_magic=no
+fi
+
+
+if test x"$enable_magic" = x"yes" ; then
+	save_LIBS="$LIBS"
+	LIBS="$LIBS -lmagic"
+	{ echo "$as_me:$LINENO: checking whether libmagic works" >&5
+echo $ECHO_N "checking whether libmagic works... $ECHO_C" >&6; }
+	cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+
+#include <magic.h>
+int main () { magic_t m = magic_open(MAGIC_NONE); }
+
+_ACEOF
+rm -f conftest.$ac_objext conftest$ac_exeext
+if { (ac_try="$ac_link"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
+  (eval "$ac_link") 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } && {
+	 test -z "$ac_c_werror_flag" ||
+	 test ! -s conftest.err
+       } && test -s conftest$ac_exeext &&
+       $as_test_x conftest$ac_exeext; then
+  { echo "$as_me:$LINENO: result: yes" >&5
+echo "${ECHO_T}yes" >&6; }
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+	{ echo "$as_me:$LINENO: result: no" >&5
+echo "${ECHO_T}no" >&6; }
+		        { { echo "$as_me:$LINENO: error: libmagic is needed for magic" >&5
+echo "$as_me: error: libmagic is needed for magic" >&2;}
+   { (exit 1); exit 1; }; }
+fi
+
+rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
+      conftest$ac_exeext conftest.$ac_ext
+	LIBS="$save_LIBS"
+
+	MAGIC_CFLAGS=
+	MAGIC_LIBS=-lmagic
+
+	
+	
+
+	
+cat >>confdefs.h <<\_ACEOF
+@%:@define ENABLE_MAGIC 1
+_ACEOF
+
+fi
+
+ if test x"$enable_magic" != x"no"; then
+  ENABLE_MAGIC_TRUE=
+  ENABLE_MAGIC_FALSE='#'
+else
+  ENABLE_MAGIC_TRUE='#'
+  ENABLE_MAGIC_FALSE=
 fi
 
 
@@ -22960,8 +23129,12 @@ if test "${enable_deprecations+set}" = set; then
   enableval=$enable_deprecations; 
 fi
 
-if test "x$enable_deprecations" = "xyes"; then
-        DISABLE_DEPRECATED="-DGSEAL_ENABLE -DG_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -DGDK_PIXBUF_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED"
+ if test "x$enable_deprecations" = xyes; then
+  ENABLE_DEPRECATIONS_TRUE=
+  ENABLE_DEPRECATIONS_FALSE='#'
+else
+  ENABLE_DEPRECATIONS_TRUE='#'
+  ENABLE_DEPRECATIONS_FALSE=
 fi
 
 
@@ -23210,6 +23383,13 @@ echo "$as_me: error: conditional \"MKDTEMP_MISSING\" was never defined.
 Usually this means the macro was only invoked conditionally." >&2;}
    { (exit 1); exit 1; }; }
 fi
+if test -z "${ENABLE_MAGIC_TRUE}" && test -z "${ENABLE_MAGIC_FALSE}"; then
+  { { echo "$as_me:$LINENO: error: conditional \"ENABLE_MAGIC\" was never defined.
+Usually this means the macro was only invoked conditionally." >&5
+echo "$as_me: error: conditional \"ENABLE_MAGIC\" was never defined.
+Usually this means the macro was only invoked conditionally." >&2;}
+   { (exit 1); exit 1; }; }
+fi
 
   ac_config_commands="$ac_config_commands po/stamp-it"
 
@@ -23225,6 +23405,13 @@ if test -z "${HAVE_GNOME_DOC_UTILS_TRUE}" && test -z "${HAVE_GNOME_DOC_UTILS_FAL
   { { echo "$as_me:$LINENO: error: conditional \"HAVE_GNOME_DOC_UTILS\" was never defined.
 Usually this means the macro was only invoked conditionally." >&5
 echo "$as_me: error: conditional \"HAVE_GNOME_DOC_UTILS\" was never defined.
+Usually this means the macro was only invoked conditionally." >&2;}
+   { (exit 1); exit 1; }; }
+fi
+if test -z "${ENABLE_DEPRECATIONS_TRUE}" && test -z "${ENABLE_DEPRECATIONS_FALSE}"; then
+  { { echo "$as_me:$LINENO: error: conditional \"ENABLE_DEPRECATIONS\" was never defined.
+Usually this means the macro was only invoked conditionally." >&5
+echo "$as_me: error: conditional \"ENABLE_DEPRECATIONS\" was never defined.
 Usually this means the macro was only invoked conditionally." >&2;}
    { (exit 1); exit 1; }; }
 fi
@@ -23961,6 +24148,12 @@ NAUTILUS_CFLAGS!$NAUTILUS_CFLAGS$ac_delim
 NAUTILUS_LIBS!$NAUTILUS_LIBS$ac_delim
 MKDTEMP_MISSING_TRUE!$MKDTEMP_MISSING_TRUE$ac_delim
 MKDTEMP_MISSING_FALSE!$MKDTEMP_MISSING_FALSE$ac_delim
+DBUS_CFLAGS!$DBUS_CFLAGS$ac_delim
+DBUS_LIBS!$DBUS_LIBS$ac_delim
+MAGIC_CFLAGS!$MAGIC_CFLAGS$ac_delim
+MAGIC_LIBS!$MAGIC_LIBS$ac_delim
+ENABLE_MAGIC_TRUE!$ENABLE_MAGIC_TRUE$ac_delim
+ENABLE_MAGIC_FALSE!$ENABLE_MAGIC_FALSE$ac_delim
 GETTEXT_PACKAGE!$GETTEXT_PACKAGE$ac_delim
 USE_NLS!$USE_NLS$ac_delim
 MSGFMT!$MSGFMT$ac_delim
@@ -24011,7 +24204,8 @@ ENABLE_SK_FALSE!$ENABLE_SK_FALSE$ac_delim
 DISTCHECK_CONFIGURE_FLAGS!$DISTCHECK_CONFIGURE_FLAGS$ac_delim
 HAVE_GNOME_DOC_UTILS_TRUE!$HAVE_GNOME_DOC_UTILS_TRUE$ac_delim
 HAVE_GNOME_DOC_UTILS_FALSE!$HAVE_GNOME_DOC_UTILS_FALSE$ac_delim
-DISABLE_DEPRECATED!$DISABLE_DEPRECATED$ac_delim
+ENABLE_DEPRECATIONS_TRUE!$ENABLE_DEPRECATIONS_TRUE$ac_delim
+ENABLE_DEPRECATIONS_FALSE!$ENABLE_DEPRECATIONS_FALSE$ac_delim
 GCONFTOOL!$GCONFTOOL$ac_delim
 GCONF_SCHEMA_CONFIG_SOURCE!$GCONF_SCHEMA_CONFIG_SOURCE$ac_delim
 GCONF_SCHEMA_FILE_DIR!$GCONF_SCHEMA_FILE_DIR$ac_delim
@@ -24022,7 +24216,7 @@ LIB@&t@OBJS!$LIB@&t@OBJS$ac_delim
 LTLIBOBJS!$LTLIBOBJS$ac_delim
 _ACEOF
 
-  if test `sed -n "s/.*$ac_delim\$/X/p" conf$$subs.sed | grep -c X` = 88; then
+  if test `sed -n "s/.*$ac_delim\$/X/p" conf$$subs.sed | grep -c X` = 95; then
     break
   elif $ac_last_try; then
     { { echo "$as_me:$LINENO: error: could not make $CONFIG_STATUS" >&5

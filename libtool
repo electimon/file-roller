@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /nix/store/6ph0zypyfc09fw6hlc1ygjvk2hv4j9vd-bash-5.3p3/bin/bash
 
 # libtoolT - Provide generalized library-building support services.
 # Generated automatically by  (GNU file-roller 2.32.2)
@@ -30,10 +30,10 @@
 # the same distribution terms that you use for the rest of that program.
 
 # A sed program that does not truncate output.
-SED="/bin/sed"
+SED="/nix/store/0zqnw11n1hk8mflzzvrz7sv1rm1cbnp8-gnused-4.9/bin/sed"
 
 # Sed that helps us avoid accidentally triggering echo(1) options like -n.
-Xsed="/bin/sed -e 1s/^X//"
+Xsed="/nix/store/0zqnw11n1hk8mflzzvrz7sv1rm1cbnp8-gnused-4.9/bin/sed -e 1s/^X//"
 
 # The HP-UX ksh and POSIX shell print the target directory to stdout
 # if CDPATH is set.
@@ -47,7 +47,7 @@ available_tags=" CXX"
 # Libtool was configured on host megumi:
 
 # Shell to use when invoking shell scripts.
-SHELL="/bin/bash"
+SHELL="/nix/store/6ph0zypyfc09fw6hlc1ygjvk2hv4j9vd-bash-5.3p3/bin/bash"
 
 # Whether or not to build shared libraries.
 build_libtool_libs=yes
@@ -94,16 +94,16 @@ CC="gcc"
 with_gcc=yes
 
 # An ERE matcher.
-EGREP="/bin/grep -E"
+EGREP="/nix/store/d4c56s8wa6rz2dnw6ridg7r1dvax1gky-gnugrep-3.12/bin/grep -E"
 
 # The linker used to build libraries.
-LD="/usr/bin/ld -m elf_x86_64"
+LD="ld"
 
 # Whether we need hard or soft links.
 LN_S="ln -s"
 
 # A BSD-compatible nm program.
-NM="/usr/bin/nm -B"
+NM="nm"
 
 # A symbol stripping program
 STRIP="strip"
@@ -171,7 +171,7 @@ dlopen_self=unknown
 dlopen_self_static=unknown
 
 # Compiler flag to prevent dynamic linking.
-link_static_flag="-static"
+link_static_flag=""
 
 # Compiler flag to turn off builtin functions.
 no_builtin_flag=" -fno-builtin"
@@ -329,10 +329,10 @@ variables_saved_for_relink="PATH LD_LIBRARY_PATH LD_RUN_PATH GCC_EXEC_PREFIX COM
 link_all_deplibs=no
 
 # Compile-time system search path for libraries
-sys_lib_search_path_spec="/usr/lib/gcc/x86_64-linux-gnu/4.3.2 /usr/lib /lib"
+sys_lib_search_path_spec="/nix/store/km4g87jxsqxvcq344ncyb8h1i6f3cqxh-glibc-2.40-218/lib64 /nix/store/alrbhz7im0w0jdwcfdgcfk7pxhkl1fzj-gcc-14.3.0-lib/lib /nix/store/k3qc3y1f6i8g2dgz5z0cf00dj4xc5rrv-gcc-14.3.0/lib/gcc/x86_64-unknown-linux-gnu/14.3.0 /nix/store/k3qc3y1f6i8g2dgz5z0cf00dj4xc5rrv-gcc-14.3.0/lib"
 
 # Run-time system search path for libraries
-sys_lib_dlsearch_path_spec="/lib /usr/lib /usr/local/lib /lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu "
+sys_lib_dlsearch_path_spec="/lib /usr/lib"
 
 # Fix the shell variable $srcfile for the compiler.
 fix_srcfile_path=""
@@ -7323,7 +7323,7 @@ disable_libs=static
 # Libtool was configured on host megumi:
 
 # Shell to use when invoking shell scripts.
-SHELL="/bin/bash"
+SHELL="/nix/store/6ph0zypyfc09fw6hlc1ygjvk2hv4j9vd-bash-5.3p3/bin/bash"
 
 # Whether or not to build shared libraries.
 build_libtool_libs=yes
@@ -7370,16 +7370,16 @@ CC="g++"
 with_gcc=yes
 
 # An ERE matcher.
-EGREP="/bin/grep -E"
+EGREP="/nix/store/d4c56s8wa6rz2dnw6ridg7r1dvax1gky-gnugrep-3.12/bin/grep -E"
 
 # The linker used to build libraries.
-LD="/usr/bin/ld -m elf_x86_64"
+LD="ld"
 
 # Whether we need hard or soft links.
 LN_S="ln -s"
 
 # A BSD-compatible nm program.
-NM="/usr/bin/nm -B"
+NM="nm"
 
 # A symbol stripping program
 STRIP="strip"
@@ -7447,7 +7447,7 @@ dlopen_self=unknown
 dlopen_self_static=unknown
 
 # Compiler flag to prevent dynamic linking.
-link_static_flag="-static"
+link_static_flag=""
 
 # Compiler flag to turn off builtin functions.
 no_builtin_flag=" -fno-builtin"
@@ -7502,11 +7502,11 @@ striplib="strip --strip-unneeded"
 
 # Dependencies to place before the objects being linked to create a
 # shared library.
-predep_objects="/usr/lib/gcc/x86_64-linux-gnu/4.3.2/../../../../lib/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.3.2/crtbeginS.o"
+predep_objects="/nix/store/km4g87jxsqxvcq344ncyb8h1i6f3cqxh-glibc-2.40-218/lib/crti.o /nix/store/k3qc3y1f6i8g2dgz5z0cf00dj4xc5rrv-gcc-14.3.0/lib/gcc/x86_64-unknown-linux-gnu/14.3.0/crtbeginS.o"
 
 # Dependencies to place after the objects being linked to create a
 # shared library.
-postdep_objects="/usr/lib/gcc/x86_64-linux-gnu/4.3.2/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/4.3.2/../../../../lib/crtn.o"
+postdep_objects="/nix/store/k3qc3y1f6i8g2dgz5z0cf00dj4xc5rrv-gcc-14.3.0/lib/gcc/x86_64-unknown-linux-gnu/14.3.0/crtendS.o /nix/store/km4g87jxsqxvcq344ncyb8h1i6f3cqxh-glibc-2.40-218/lib/crtn.o"
 
 # Dependencies to place before the objects being linked to create a
 # shared library.
@@ -7518,11 +7518,11 @@ postdeps="-lstdc++ -lm -lgcc_s -lc -lgcc_s"
 
 # The directories searched by this compiler when creating a shared
 # library
-compiler_lib_search_dirs="/usr/lib/gcc/x86_64-linux-gnu/4.3.2 /usr/lib/gcc/x86_64-linux-gnu/4.3.2 /usr/lib/gcc/x86_64-linux-gnu/4.3.2/../../../../lib /lib/../lib /usr/lib/../lib /usr/lib/gcc/x86_64-linux-gnu/4.3.2/../../.."
+compiler_lib_search_dirs="/nix/store/wrz7lq7sqpg159wfhy0kvrx5s6kzh2nw-python-2.7.18.12/lib /nix/store/4mrjrrpn7nbwqnci26dmlp8ghdd435j3-libxml2-2.9-2.9.14/lib /nix/store/ww6ry2jbhk76n3qasx2s1kzam25rznsx-libxslt-1.1.45/lib /nix/store/3n6z6l7my1imm44x4h614ch5n5k40ark-scrollkeeper-0.3.14/lib /nix/store/b6ac1wl4z9vgc7qsawsz6zlf3d6p8xx4-gettext-0.25.1/lib /nix/store/xsm921nqvv3im5dqdfbqvx56xxq7mxck-libxcrypt-4.5.2/lib /nix/store/av7gx5cl22ijzm8rx9hn7gprknvq5xxa-expat-2.7.4/lib /nix/store/2ikmh7bqngbjkkrmhwdb5yld6akncnd5-dbus-1.14.10-lib/lib /nix/store/3j0jwcygamiza2n1ga69sdk6skaz5k3k-zlib-1.3.2/lib /nix/store/wxm6pczq28ppr7ffwclsl6njbzzr48zf-libffi-3.5.2/lib /nix/store/mg151w65chcirlr7398jrz916wrfh3gg-glib-2.86.3/lib /nix/store/1m419gkk0nqnc1mb4b0ck2rx16w8rbrs-at-spi2-core-2.58.2/lib /nix/store/qbp6607qrl508sdg9dnkzr5avhk54w48-bzip2-1.0.8/lib /nix/store/rsmb0b09rjzrjhng3wcqcx7bab9kjjik-brotli-1.1.0-lib/lib /nix/store/09wbn9wfigxq0lf95wr8naidwlhg1chf-libpng-apng-1.6.55/lib /nix/store/n8d8ch4ify4rbmyyvgzcqnpr0qak7b2s-freetype-2.13.3/lib /nix/store/vry1ic8kdpmw42mp3qphjnwdh7n946gb-fontconfig-2.17.1-lib/lib /nix/store/87lvlii0q6kh6kdw7898dc51hbl65l87-pixman-0.46.4/lib /nix/store/hzpbah5kw3pv1nfglw8pnbbfr1xvcdj5-libxau-1.0.12/lib /nix/store/x0pzlm34sbaz7kshyj6889lqihs368gd-libxext-1.3.6/lib /nix/store/0d2nplzyyigdjbd9l7s1ka4809zm7pwl-libx11-1.8.12/lib /nix/store/b54y6m5pkp44zgzv8rhkv40aq2rk0gkq-libxrender-0.9.12/lib /nix/store/4jp9hx8spdys5g8rvadp238y4z70nv0a-libxcb-1.17.0/lib /nix/store/jcvi7xlffm9f681vdmzfbzbmib5fhn5i-cairo-1.18.4/lib /nix/store/xw57p99wh1h8s4b64dv5n55048jdd47d-libtiff-4.7.1/lib /nix/store/8y7g3qd1n7shk3sd0gdg654fy31918h9-libjpeg-turbo-3.1.2/lib /nix/store/2g6acnj6ljamsqfgf1q6ipdqr5yfg7vq-gdk-pixbuf-2.44.4/lib /nix/store/d9rn1s5zi1sgdaqqf4xqvczrmg1s4cvb-graphite2-1.3.14/lib /nix/store/yzyh44g07mb5d3151lvv0ll8rdmg1fbl-harfbuzz-12.1.0/lib /nix/store/vfl4msjsyqmr4wpv1z0xnvxma362fikm-libxft-2.3.9/lib /nix/store/7n76ys2lcy7l54hslslw74fa5zszlh19-pango-1.57.0/lib /nix/store/1ppwc4g683dq8d7yq9ybfc7g1l7fh93f-libxfixes-6.0.2/lib /nix/store/q5fkrrlh2xndwnfbfwx17vvx3a72gndc-libxcomposite-0.4.6/lib /nix/store/crk1lqq2hbbhl69vhh9969s00qn2cygv-libxcursor-1.2.3/lib /nix/store/480scknkmmianwsrd0arm8z0fhssh4hn-libxi-1.8.2/lib /nix/store/688cbsc41sdq0z82p7q5lxxh484x0hlx-libxrandr-1.5.4/lib /nix/store/plc9r597rhbnwc4ip3zzyxndmrd8cb83-libxinerama-1.1.5/lib /nix/store/km81slwkcc82dbwywl10gpffjb78g6ni-gmp-with-cxx-6.3.0/lib /nix/store/g2fb201c3iaasabfl0jg41nbxgly7wm4-cups-2.4.16-lib/lib /nix/store/2sis4z3b1s674v2vsx7q98g4np80skmk-gtk+-2.24.33/lib /nix/store/84mbb8lmq1lsz5c00l96dwk9agdji6rs-gconf-2.32.0/lib /nix/store/1frbykabr8hyww562il16jwpc3ng3dkq-dbus-glib-0.114/lib /nix/store/ibr8xz2flyl45mhxksczwk9i7gzpv35p-libice-1.1.2/lib /nix/store/6vqvx5m8cba5nnkvr4zmdl5nk89lsjcc-libsm-1.2.6/lib /nix/store/z1iglc4g96mx4dm4jjkmj83vhhs256qf-file-5.45/lib /nix/store/wrz7lq7sqpg159wfhy0kvrx5s6kzh2nw-python-2.7.18.12/lib /nix/store/4mrjrrpn7nbwqnci26dmlp8ghdd435j3-libxml2-2.9-2.9.14/lib /nix/store/ww6ry2jbhk76n3qasx2s1kzam25rznsx-libxslt-1.1.45/lib /nix/store/3n6z6l7my1imm44x4h614ch5n5k40ark-scrollkeeper-0.3.14/lib /nix/store/b6ac1wl4z9vgc7qsawsz6zlf3d6p8xx4-gettext-0.25.1/lib /nix/store/xsm921nqvv3im5dqdfbqvx56xxq7mxck-libxcrypt-4.5.2/lib /nix/store/av7gx5cl22ijzm8rx9hn7gprknvq5xxa-expat-2.7.4/lib /nix/store/2ikmh7bqngbjkkrmhwdb5yld6akncnd5-dbus-1.14.10-lib/lib /nix/store/3j0jwcygamiza2n1ga69sdk6skaz5k3k-zlib-1.3.2/lib /nix/store/wxm6pczq28ppr7ffwclsl6njbzzr48zf-libffi-3.5.2/lib /nix/store/mg151w65chcirlr7398jrz916wrfh3gg-glib-2.86.3/lib /nix/store/1m419gkk0nqnc1mb4b0ck2rx16w8rbrs-at-spi2-core-2.58.2/lib /nix/store/qbp6607qrl508sdg9dnkzr5avhk54w48-bzip2-1.0.8/lib /nix/store/rsmb0b09rjzrjhng3wcqcx7bab9kjjik-brotli-1.1.0-lib/lib /nix/store/09wbn9wfigxq0lf95wr8naidwlhg1chf-libpng-apng-1.6.55/lib /nix/store/n8d8ch4ify4rbmyyvgzcqnpr0qak7b2s-freetype-2.13.3/lib /nix/store/vry1ic8kdpmw42mp3qphjnwdh7n946gb-fontconfig-2.17.1-lib/lib /nix/store/87lvlii0q6kh6kdw7898dc51hbl65l87-pixman-0.46.4/lib /nix/store/hzpbah5kw3pv1nfglw8pnbbfr1xvcdj5-libxau-1.0.12/lib /nix/store/x0pzlm34sbaz7kshyj6889lqihs368gd-libxext-1.3.6/lib /nix/store/0d2nplzyyigdjbd9l7s1ka4809zm7pwl-libx11-1.8.12/lib /nix/store/b54y6m5pkp44zgzv8rhkv40aq2rk0gkq-libxrender-0.9.12/lib /nix/store/4jp9hx8spdys5g8rvadp238y4z70nv0a-libxcb-1.17.0/lib /nix/store/jcvi7xlffm9f681vdmzfbzbmib5fhn5i-cairo-1.18.4/lib /nix/store/xw57p99wh1h8s4b64dv5n55048jdd47d-libtiff-4.7.1/lib /nix/store/8y7g3qd1n7shk3sd0gdg654fy31918h9-libjpeg-turbo-3.1.2/lib /nix/store/2g6acnj6ljamsqfgf1q6ipdqr5yfg7vq-gdk-pixbuf-2.44.4/lib /nix/store/d9rn1s5zi1sgdaqqf4xqvczrmg1s4cvb-graphite2-1.3.14/lib /nix/store/yzyh44g07mb5d3151lvv0ll8rdmg1fbl-harfbuzz-12.1.0/lib /nix/store/vfl4msjsyqmr4wpv1z0xnvxma362fikm-libxft-2.3.9/lib /nix/store/7n76ys2lcy7l54hslslw74fa5zszlh19-pango-1.57.0/lib /nix/store/1ppwc4g683dq8d7yq9ybfc7g1l7fh93f-libxfixes-6.0.2/lib /nix/store/q5fkrrlh2xndwnfbfwx17vvx3a72gndc-libxcomposite-0.4.6/lib /nix/store/crk1lqq2hbbhl69vhh9969s00qn2cygv-libxcursor-1.2.3/lib /nix/store/480scknkmmianwsrd0arm8z0fhssh4hn-libxi-1.8.2/lib /nix/store/688cbsc41sdq0z82p7q5lxxh484x0hlx-libxrandr-1.5.4/lib /nix/store/plc9r597rhbnwc4ip3zzyxndmrd8cb83-libxinerama-1.1.5/lib /nix/store/km81slwkcc82dbwywl10gpffjb78g6ni-gmp-with-cxx-6.3.0/lib /nix/store/g2fb201c3iaasabfl0jg41nbxgly7wm4-cups-2.4.16-lib/lib /nix/store/2sis4z3b1s674v2vsx7q98g4np80skmk-gtk+-2.24.33/lib /nix/store/84mbb8lmq1lsz5c00l96dwk9agdji6rs-gconf-2.32.0/lib /nix/store/1frbykabr8hyww562il16jwpc3ng3dkq-dbus-glib-0.114/lib /nix/store/ibr8xz2flyl45mhxksczwk9i7gzpv35p-libice-1.1.2/lib /nix/store/6vqvx5m8cba5nnkvr4zmdl5nk89lsjcc-libsm-1.2.6/lib /nix/store/z1iglc4g96mx4dm4jjkmj83vhhs256qf-file-5.45/lib /nix/store/km4g87jxsqxvcq344ncyb8h1i6f3cqxh-glibc-2.40-218/lib /nix/store/k3qc3y1f6i8g2dgz5z0cf00dj4xc5rrv-gcc-14.3.0/lib/gcc/x86_64-unknown-linux-gnu/14.3.0 /nix/store/alrbhz7im0w0jdwcfdgcfk7pxhkl1fzj-gcc-14.3.0-lib/lib /nix/store/alrbhz7im0w0jdwcfdgcfk7pxhkl1fzj-gcc-14.3.0-lib/lib /nix/store/km4g87jxsqxvcq344ncyb8h1i6f3cqxh-glibc-2.40-218/lib /nix/store/alrbhz7im0w0jdwcfdgcfk7pxhkl1fzj-gcc-14.3.0-lib/lib /nix/store/k3qc3y1f6i8g2dgz5z0cf00dj4xc5rrv-gcc-14.3.0/lib/gcc/x86_64-unknown-linux-gnu/14.3.0 /nix/store/k3qc3y1f6i8g2dgz5z0cf00dj4xc5rrv-gcc-14.3.0/lib/gcc/x86_64-unknown-linux-gnu/14.3.0/../../.."
 
 # The library search path used internally by the compiler when linking
 # a shared library.
-compiler_lib_search_path="-L/usr/lib/gcc/x86_64-linux-gnu/4.3.2 -L/usr/lib/gcc/x86_64-linux-gnu/4.3.2 -L/usr/lib/gcc/x86_64-linux-gnu/4.3.2/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.3.2/../../.."
+compiler_lib_search_path="-L/nix/store/wrz7lq7sqpg159wfhy0kvrx5s6kzh2nw-python-2.7.18.12/lib -L/nix/store/4mrjrrpn7nbwqnci26dmlp8ghdd435j3-libxml2-2.9-2.9.14/lib -L/nix/store/ww6ry2jbhk76n3qasx2s1kzam25rznsx-libxslt-1.1.45/lib -L/nix/store/3n6z6l7my1imm44x4h614ch5n5k40ark-scrollkeeper-0.3.14/lib -L/nix/store/b6ac1wl4z9vgc7qsawsz6zlf3d6p8xx4-gettext-0.25.1/lib -L/nix/store/xsm921nqvv3im5dqdfbqvx56xxq7mxck-libxcrypt-4.5.2/lib -L/nix/store/av7gx5cl22ijzm8rx9hn7gprknvq5xxa-expat-2.7.4/lib -L/nix/store/2ikmh7bqngbjkkrmhwdb5yld6akncnd5-dbus-1.14.10-lib/lib -L/nix/store/3j0jwcygamiza2n1ga69sdk6skaz5k3k-zlib-1.3.2/lib -L/nix/store/wxm6pczq28ppr7ffwclsl6njbzzr48zf-libffi-3.5.2/lib -L/nix/store/mg151w65chcirlr7398jrz916wrfh3gg-glib-2.86.3/lib -L/nix/store/1m419gkk0nqnc1mb4b0ck2rx16w8rbrs-at-spi2-core-2.58.2/lib -L/nix/store/qbp6607qrl508sdg9dnkzr5avhk54w48-bzip2-1.0.8/lib -L/nix/store/rsmb0b09rjzrjhng3wcqcx7bab9kjjik-brotli-1.1.0-lib/lib -L/nix/store/09wbn9wfigxq0lf95wr8naidwlhg1chf-libpng-apng-1.6.55/lib -L/nix/store/n8d8ch4ify4rbmyyvgzcqnpr0qak7b2s-freetype-2.13.3/lib -L/nix/store/vry1ic8kdpmw42mp3qphjnwdh7n946gb-fontconfig-2.17.1-lib/lib -L/nix/store/87lvlii0q6kh6kdw7898dc51hbl65l87-pixman-0.46.4/lib -L/nix/store/hzpbah5kw3pv1nfglw8pnbbfr1xvcdj5-libxau-1.0.12/lib -L/nix/store/x0pzlm34sbaz7kshyj6889lqihs368gd-libxext-1.3.6/lib -L/nix/store/0d2nplzyyigdjbd9l7s1ka4809zm7pwl-libx11-1.8.12/lib -L/nix/store/b54y6m5pkp44zgzv8rhkv40aq2rk0gkq-libxrender-0.9.12/lib -L/nix/store/4jp9hx8spdys5g8rvadp238y4z70nv0a-libxcb-1.17.0/lib -L/nix/store/jcvi7xlffm9f681vdmzfbzbmib5fhn5i-cairo-1.18.4/lib -L/nix/store/xw57p99wh1h8s4b64dv5n55048jdd47d-libtiff-4.7.1/lib -L/nix/store/8y7g3qd1n7shk3sd0gdg654fy31918h9-libjpeg-turbo-3.1.2/lib -L/nix/store/2g6acnj6ljamsqfgf1q6ipdqr5yfg7vq-gdk-pixbuf-2.44.4/lib -L/nix/store/d9rn1s5zi1sgdaqqf4xqvczrmg1s4cvb-graphite2-1.3.14/lib -L/nix/store/yzyh44g07mb5d3151lvv0ll8rdmg1fbl-harfbuzz-12.1.0/lib -L/nix/store/vfl4msjsyqmr4wpv1z0xnvxma362fikm-libxft-2.3.9/lib -L/nix/store/7n76ys2lcy7l54hslslw74fa5zszlh19-pango-1.57.0/lib -L/nix/store/1ppwc4g683dq8d7yq9ybfc7g1l7fh93f-libxfixes-6.0.2/lib -L/nix/store/q5fkrrlh2xndwnfbfwx17vvx3a72gndc-libxcomposite-0.4.6/lib -L/nix/store/crk1lqq2hbbhl69vhh9969s00qn2cygv-libxcursor-1.2.3/lib -L/nix/store/480scknkmmianwsrd0arm8z0fhssh4hn-libxi-1.8.2/lib -L/nix/store/688cbsc41sdq0z82p7q5lxxh484x0hlx-libxrandr-1.5.4/lib -L/nix/store/plc9r597rhbnwc4ip3zzyxndmrd8cb83-libxinerama-1.1.5/lib -L/nix/store/km81slwkcc82dbwywl10gpffjb78g6ni-gmp-with-cxx-6.3.0/lib -L/nix/store/g2fb201c3iaasabfl0jg41nbxgly7wm4-cups-2.4.16-lib/lib -L/nix/store/2sis4z3b1s674v2vsx7q98g4np80skmk-gtk+-2.24.33/lib -L/nix/store/84mbb8lmq1lsz5c00l96dwk9agdji6rs-gconf-2.32.0/lib -L/nix/store/1frbykabr8hyww562il16jwpc3ng3dkq-dbus-glib-0.114/lib -L/nix/store/ibr8xz2flyl45mhxksczwk9i7gzpv35p-libice-1.1.2/lib -L/nix/store/6vqvx5m8cba5nnkvr4zmdl5nk89lsjcc-libsm-1.2.6/lib -L/nix/store/z1iglc4g96mx4dm4jjkmj83vhhs256qf-file-5.45/lib -L/nix/store/wrz7lq7sqpg159wfhy0kvrx5s6kzh2nw-python-2.7.18.12/lib -L/nix/store/4mrjrrpn7nbwqnci26dmlp8ghdd435j3-libxml2-2.9-2.9.14/lib -L/nix/store/ww6ry2jbhk76n3qasx2s1kzam25rznsx-libxslt-1.1.45/lib -L/nix/store/3n6z6l7my1imm44x4h614ch5n5k40ark-scrollkeeper-0.3.14/lib -L/nix/store/b6ac1wl4z9vgc7qsawsz6zlf3d6p8xx4-gettext-0.25.1/lib -L/nix/store/xsm921nqvv3im5dqdfbqvx56xxq7mxck-libxcrypt-4.5.2/lib -L/nix/store/av7gx5cl22ijzm8rx9hn7gprknvq5xxa-expat-2.7.4/lib -L/nix/store/2ikmh7bqngbjkkrmhwdb5yld6akncnd5-dbus-1.14.10-lib/lib -L/nix/store/3j0jwcygamiza2n1ga69sdk6skaz5k3k-zlib-1.3.2/lib -L/nix/store/wxm6pczq28ppr7ffwclsl6njbzzr48zf-libffi-3.5.2/lib -L/nix/store/mg151w65chcirlr7398jrz916wrfh3gg-glib-2.86.3/lib -L/nix/store/1m419gkk0nqnc1mb4b0ck2rx16w8rbrs-at-spi2-core-2.58.2/lib -L/nix/store/qbp6607qrl508sdg9dnkzr5avhk54w48-bzip2-1.0.8/lib -L/nix/store/rsmb0b09rjzrjhng3wcqcx7bab9kjjik-brotli-1.1.0-lib/lib -L/nix/store/09wbn9wfigxq0lf95wr8naidwlhg1chf-libpng-apng-1.6.55/lib -L/nix/store/n8d8ch4ify4rbmyyvgzcqnpr0qak7b2s-freetype-2.13.3/lib -L/nix/store/vry1ic8kdpmw42mp3qphjnwdh7n946gb-fontconfig-2.17.1-lib/lib -L/nix/store/87lvlii0q6kh6kdw7898dc51hbl65l87-pixman-0.46.4/lib -L/nix/store/hzpbah5kw3pv1nfglw8pnbbfr1xvcdj5-libxau-1.0.12/lib -L/nix/store/x0pzlm34sbaz7kshyj6889lqihs368gd-libxext-1.3.6/lib -L/nix/store/0d2nplzyyigdjbd9l7s1ka4809zm7pwl-libx11-1.8.12/lib -L/nix/store/b54y6m5pkp44zgzv8rhkv40aq2rk0gkq-libxrender-0.9.12/lib -L/nix/store/4jp9hx8spdys5g8rvadp238y4z70nv0a-libxcb-1.17.0/lib -L/nix/store/jcvi7xlffm9f681vdmzfbzbmib5fhn5i-cairo-1.18.4/lib -L/nix/store/xw57p99wh1h8s4b64dv5n55048jdd47d-libtiff-4.7.1/lib -L/nix/store/8y7g3qd1n7shk3sd0gdg654fy31918h9-libjpeg-turbo-3.1.2/lib -L/nix/store/2g6acnj6ljamsqfgf1q6ipdqr5yfg7vq-gdk-pixbuf-2.44.4/lib -L/nix/store/d9rn1s5zi1sgdaqqf4xqvczrmg1s4cvb-graphite2-1.3.14/lib -L/nix/store/yzyh44g07mb5d3151lvv0ll8rdmg1fbl-harfbuzz-12.1.0/lib -L/nix/store/vfl4msjsyqmr4wpv1z0xnvxma362fikm-libxft-2.3.9/lib -L/nix/store/7n76ys2lcy7l54hslslw74fa5zszlh19-pango-1.57.0/lib -L/nix/store/1ppwc4g683dq8d7yq9ybfc7g1l7fh93f-libxfixes-6.0.2/lib -L/nix/store/q5fkrrlh2xndwnfbfwx17vvx3a72gndc-libxcomposite-0.4.6/lib -L/nix/store/crk1lqq2hbbhl69vhh9969s00qn2cygv-libxcursor-1.2.3/lib -L/nix/store/480scknkmmianwsrd0arm8z0fhssh4hn-libxi-1.8.2/lib -L/nix/store/688cbsc41sdq0z82p7q5lxxh484x0hlx-libxrandr-1.5.4/lib -L/nix/store/plc9r597rhbnwc4ip3zzyxndmrd8cb83-libxinerama-1.1.5/lib -L/nix/store/km81slwkcc82dbwywl10gpffjb78g6ni-gmp-with-cxx-6.3.0/lib -L/nix/store/g2fb201c3iaasabfl0jg41nbxgly7wm4-cups-2.4.16-lib/lib -L/nix/store/2sis4z3b1s674v2vsx7q98g4np80skmk-gtk+-2.24.33/lib -L/nix/store/84mbb8lmq1lsz5c00l96dwk9agdji6rs-gconf-2.32.0/lib -L/nix/store/1frbykabr8hyww562il16jwpc3ng3dkq-dbus-glib-0.114/lib -L/nix/store/ibr8xz2flyl45mhxksczwk9i7gzpv35p-libice-1.1.2/lib -L/nix/store/6vqvx5m8cba5nnkvr4zmdl5nk89lsjcc-libsm-1.2.6/lib -L/nix/store/z1iglc4g96mx4dm4jjkmj83vhhs256qf-file-5.45/lib -L/nix/store/km4g87jxsqxvcq344ncyb8h1i6f3cqxh-glibc-2.40-218/lib -L/nix/store/k3qc3y1f6i8g2dgz5z0cf00dj4xc5rrv-gcc-14.3.0/lib/gcc/x86_64-unknown-linux-gnu/14.3.0 -L/nix/store/alrbhz7im0w0jdwcfdgcfk7pxhkl1fzj-gcc-14.3.0-lib/lib -L/nix/store/alrbhz7im0w0jdwcfdgcfk7pxhkl1fzj-gcc-14.3.0-lib/lib -L/nix/store/km4g87jxsqxvcq344ncyb8h1i6f3cqxh-glibc-2.40-218/lib -L/nix/store/alrbhz7im0w0jdwcfdgcfk7pxhkl1fzj-gcc-14.3.0-lib/lib -L/nix/store/k3qc3y1f6i8g2dgz5z0cf00dj4xc5rrv-gcc-14.3.0/lib/gcc/x86_64-unknown-linux-gnu/14.3.0 -L/nix/store/k3qc3y1f6i8g2dgz5z0cf00dj4xc5rrv-gcc-14.3.0/lib/gcc/x86_64-unknown-linux-gnu/14.3.0/../../.."
 
 # Method to check whether dependent libraries are shared objects.
 deplibs_check_method="pass_all"
@@ -7602,10 +7602,10 @@ variables_saved_for_relink="PATH LD_LIBRARY_PATH LD_RUN_PATH GCC_EXEC_PREFIX COM
 link_all_deplibs=no
 
 # Compile-time system search path for libraries
-sys_lib_search_path_spec="/usr/lib/gcc/x86_64-linux-gnu/4.3.2 /usr/lib /lib"
+sys_lib_search_path_spec="/nix/store/km4g87jxsqxvcq344ncyb8h1i6f3cqxh-glibc-2.40-218/lib64 /nix/store/alrbhz7im0w0jdwcfdgcfk7pxhkl1fzj-gcc-14.3.0-lib/lib /nix/store/k3qc3y1f6i8g2dgz5z0cf00dj4xc5rrv-gcc-14.3.0/lib/gcc/x86_64-unknown-linux-gnu/14.3.0 /nix/store/k3qc3y1f6i8g2dgz5z0cf00dj4xc5rrv-gcc-14.3.0/lib"
 
 # Run-time system search path for libraries
-sys_lib_dlsearch_path_spec="/lib /usr/lib /usr/local/lib /lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu "
+sys_lib_dlsearch_path_spec="/lib /usr/lib"
 
 # Fix the shell variable $srcfile for the compiler.
 fix_srcfile_path=""

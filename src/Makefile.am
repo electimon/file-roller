@@ -188,10 +188,6 @@ fr-enum-types.c: typedefs.h fr-enum-types.h
 	&& (cmp -s xgen-$(@F) fr-enum-types.c || cp xgen-$(@F) fr-enum-types.c ) \
 	&& rm -f xgen-$(@F) )
 
-file_roller_LDADD =							\
-		    $(top_builddir)/copy-n-paste/libeggsmclient.la	\
-		    $(FR_LIBS)						\
-
 file_roller_LDADD =					\
 	$(top_builddir)/copy-n-paste/libeggsmclient.la	\
 	$(FR_LIBS)					\
