@@ -32,6 +32,7 @@
 #include "file-data.h"
 #include "file-utils.h"
 #include "glib-utils.h"
+#include "rar-utils.h"
 #include "fr-command.h"
 #include "fr-command-7z.h"
 
