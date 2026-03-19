@@ -1,0 +1,8 @@
+**.o
+Makefile
+*.gmo
+.deps
+*.lo
+.libs
+config.log
+config.h
