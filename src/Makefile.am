@@ -36,7 +36,8 @@ INCLUDES =						\
 	-DPRIVEXECDIR=\"$(privexecdir)\"		\
 	-DSHDIR=\"$(shdir)\"				\
 	$(DISABLE_DEPRECATED)				\
-	$(FR_CFLAGS)
+	$(FR_CFLAGS)					\
+	$(DBUS_CFLAGS)
 
 BUILT_SOURCES =			\
 	fr-marshal.c		\
@@ -183,7 +184,8 @@ fr-enum-types.c: typedefs.h fr-enum-types.h
 
 file_roller_LDADD =							\
 		    $(top_builddir)/copy-n-paste/libeggsmclient.la	\
-		    $(FR_LIBS)
+		    $(FR_LIBS)						\
+		    $(DBUS_LIBS)
 
 EXTRA_DIST = fr-marshal.list
 

@@ -25,6 +25,11 @@
 #include <glib/gi18n.h>
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
+
+#ifdef ENABLE_PACKAGEKIT
+#include <dbus/dbus-glib.h>
+#endif /* ENABLE_PACKAGEKIT */
+
 #include "dlg-package-installer.h"
 #include "gtk-utils.h"
 #include "main.h"
@@ -76,33 +81,32 @@ package_installer_terminated (InstallerData *idata,
 
 
 #ifdef ENABLE_PACKAGEKIT
-
-
 static void
-packagekit_install_package_names_ready_cb (GObject      *source_object,
-					   GAsyncResult *res,
-					   gpointer      user_data)
+packagekit_install_package_call_notify_cb (DBusGProxy     *proxy,
+					   DBusGProxyCall *call,
+					   gpointer        user_data)
 {
 	InstallerData *idata = user_data;
-	GDBusProxy    *proxy;
-	GVariant      *values;
+	gboolean       success;
 	GError        *error = NULL;
 	char          *message = NULL;
 
-	proxy = G_DBUS_PROXY (source_object);
-	values = g_dbus_proxy_call_finish (proxy, res, &error);
-	if (values == NULL) {
-		message = g_strdup_printf ("%s\n%s",
-					   _("There was an internal error trying to search for applications:"),
-					   error->message);
-		g_clear_error (&error);
+	success = dbus_g_proxy_end_call (proxy, call, &error, G_TYPE_INVALID);
+	if (! success) {
+		const char *remote = NULL;
+
+		if (error->domain == DBUS_GERROR && error->code == DBUS_GERROR_REMOTE_EXCEPTION)
+			remote = dbus_g_error_get_name (error);
+		if ((remote == NULL) || (strcmp (remote, "org.freedesktop.PackageKit.Modify.Failed") == 0))
+			message = g_strdup_printf ("%s\n%s",
+                                                   _("There was an internal error trying to search for applications:"),
+                                                   error->message);
+		g_error_free (error);
 	}
 
 	package_installer_terminated (idata, message);
 
 	g_free (message);
-	if (values != NULL)
-		g_variant_unref (values);
 	g_object_unref (proxy);
 }
 
@@ -142,13 +146,13 @@ get_packages_real_names (char **names)
 static void
 install_packages (InstallerData *idata)
 {
-	GDBusConnection *connection;
-	GError          *error = NULL;
+	gboolean         success = FALSE;
+	DBusGConnection *connection;
 
-	connection = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, &error);
+	connection = dbus_g_bus_get (DBUS_BUS_SESSION, NULL);
 	if (connection != NULL) {
 		GdkWindow  *window;
-		GDBusProxy *proxy;
+		DBusGProxy *proxy;
 
 		window = gtk_widget_get_window (GTK_WIDGET (idata->window));
 		if (window != NULL) {
@@ -159,55 +163,44 @@ install_packages (InstallerData *idata)
 			gdk_cursor_unref (cursor);
 		}
 
-		proxy = g_dbus_proxy_new_sync (connection,
-					       G_DBUS_PROXY_FLAGS_NONE,
-					       NULL,
-					       "org.freedesktop.PackageKit",
-					       "/org/freedesktop/PackageKit",
-					       "org.freedesktop.PackageKit.Modify",
-					       NULL,
-					       &error);
+		proxy = dbus_g_proxy_new_for_name (connection,
+						   "org.freedesktop.PackageKit",
+						   "/org/freedesktop/PackageKit",
+						   "org.freedesktop.PackageKit.Modify");
 
 		if (proxy != NULL) {
-			guint   xid;
-			char  **names;
-			char  **real_names;
+			guint            xid;
+			char           **names;
+			char           **real_names;
+			DBusGProxyCall  *call;
 
-			if (window != NULL)
-				xid = GDK_WINDOW_XID (window);
-			else
-				xid = 0;
+		        if (window != NULL)
+		        	xid = GDK_WINDOW_XID (window);
+		        else
+		        	xid = 0;
 
-			names = g_strsplit (idata->packages, ",", -1);
-			real_names = get_packages_real_names (names);
+		        dbus_g_proxy_set_default_timeout (proxy, INT_MAX);
 
-			g_dbus_proxy_call (proxy,
-					   "InstallPackageNames",
-					   g_variant_new ("(u^ass)",
-							  xid,
-							  names,
-							  "hide-confirm-search,hide-finished,hide-warning"),
-					   G_DBUS_CALL_FLAGS_NONE,
-					   G_MAXINT,
-					   NULL,
-					   packagekit_install_package_names_ready_cb,
-					   idata);
+		        names = g_strsplit (idata->packages, ",", -1);
+		        real_names = get_packages_real_names (names);
+			call = dbus_g_proxy_begin_call (proxy,
+							"InstallPackageNames",
+							(DBusGProxyCallNotify) packagekit_install_package_call_notify_cb,
+							idata,
+							NULL,
+							G_TYPE_UINT, xid,
+							G_TYPE_STRV, names,
+							G_TYPE_STRING, "hide-confirm-search,hide-finished,hide-warning",
+							G_TYPE_INVALID);
+			success = (call != NULL);
 
 			g_strfreev (real_names);
 			g_strfreev (names);
 		}
 	}
 
-	if (error != NULL) {
-		char *message;
-
-		message = g_strdup_printf ("%s\n%s",
-					   _("There was an internal error trying to search for applications:"),
-					   error->message);
-		package_installer_terminated (idata, message);
-
-		g_clear_error (&error);
-	}
+	if (! success)
+		package_installer_terminated (idata, _("Archive type not supported."));
 }
 
 
@@ -228,8 +221,6 @@ confirm_search_dialog_response_cb (GtkDialog *dialog,
 		installer_data_free (idata);
 	}
 }
-
-
 #endif /* ENABLE_PACKAGEKIT */
 
 
