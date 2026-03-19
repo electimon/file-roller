@@ -151,10 +151,7 @@ GNOME_DOC_INIT
 dnl ******************************
 
 AC_ARG_ENABLE(deprecations,AS_HELP_STRING([--enable-deprecations],[warn about deprecated usages]),)
-if test "x$enable_deprecations" = "xyes"; then
-        DISABLE_DEPRECATED="-DGSEAL_ENABLE -DG_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -DGDK_PIXBUF_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED"
-fi
-AC_SUBST(DISABLE_DEPRECATED)
+AM_CONDITIONAL(ENABLE_DEPRECATIONS, test "x$enable_deprecations" = xyes)
 
 dnl ******************************
 
